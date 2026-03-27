@@ -1,0 +1,44 @@
+{
+  "name": "backend",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "dotenv": "^17.2.2",
+      "zod": "^4.1.13",
+      "typescript": "^5",
+      "@types/bun": "^1.3.4",
+      "hono": "^4.8.2",
+      "@trpc/server": "^11.13.4",
+      "better-auth": "1.5.5",
+      "drizzle-orm": "^0.45.1",
+      "@types/pg": "^8.16.0"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:server": "turbo -F server dev",
+    "db:push": "turbo -F @backend/db db:push",
+    "db:studio": "turbo -F @backend/db db:studio",
+    "db:generate": "turbo -F @backend/db db:generate",
+    "db:migrate": "turbo -F @backend/db db:migrate"
+  },
+  "dependencies": {
+    "@backend/env": "workspace:*",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@backend/config": "workspace:*",
+    "@types/bun": "catalog:",
+    "turbo": "^2.8.12",
+    "typescript": "catalog:"
+  },
+  "packageManager": "bun@1.3.2"
+}
